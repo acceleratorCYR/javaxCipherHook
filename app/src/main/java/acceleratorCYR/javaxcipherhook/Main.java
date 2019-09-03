@@ -36,7 +36,7 @@ public class Main implements IXposedHookLoadPackage {
     private XC_MethodHook methodhookPub;
     private XC_MethodHook methodhookCryptoInit;
 
-    private static String confFileName = "/data/data/acceleratorCYR.javaxcipherhook/monitor.conf";
+    private static String confFileName = "/data/local/tmp/cipher_monitor.conf";
 
     private boolean tryHookMethodByName(String className, String methodName)
     {
@@ -141,6 +141,8 @@ public class Main implements IXposedHookLoadPackage {
 
             tryHookMethodByName("javax.crypto.Cipher", "doFinal");
             tryHookMethodByName("javax.crypto.Cipher", "update");
+            //try hook HttpGet HttpPost
+            //Http
 
 
             tryHookMethodByNameWithMethod("javax.crypto.Cipher", "init", methodhookCryptoInit);
